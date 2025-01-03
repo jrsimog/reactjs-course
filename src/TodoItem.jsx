@@ -1,11 +1,11 @@
 import React from "react";
 
-function TodoItem() {
+function TodoItem({text, completed}) {
 		return (
-		<li>
-		<span>v</span>
-		<p>texto</p>
-		<span>X</span>
+		<li key={text}>
+		<span>{completed ? '✔' : '❌'}</span>
+		<p>{text}</p>
+		<button>Eliminar</button>
 	</li>		);
 }
 
