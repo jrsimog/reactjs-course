@@ -1,11 +1,12 @@
 import React from "react";
-
+import './TodoItem.css';
 function TodoItem({text, completed}) {
+	const textStatus = completed ? 'completed' : 'incompleted';
 		return (
 		<li key={text}>
 		<span>{completed ? '✔' : '❌'}</span>
-		<p>{text}</p>
-		<button>Eliminar</button>
+		<p className={textStatus}>{text}</p>
+			<button className="btn-delete">Eliminar</button>
 	</li>		);
 }
 
