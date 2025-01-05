@@ -20,7 +20,7 @@ function App() {
 			<CreateTodoButton/>
 				<img src={reactLogo} className="react-logo" alt="logo" />
 				<img src={viteLogo} className="vite-logo" alt="logo" />
-			<TodoCounter completedTodos={2} totalTodos={6}/> <TodoSearch />
+				<TodoCounter completedTodos={2} totalTodos={6}/> <TodoSearch />
 			</header>
 			<TodoList>
 				{ defaultTodos.map(todo => ( <TodoItem text={todo.text} key={todo.text} completed={todo.completed} />)) }
