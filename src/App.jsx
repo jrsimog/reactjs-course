@@ -6,24 +6,40 @@ import CreateTodoButton from './CreateTodoButton';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useState } from "react";
+
 const defaultTodos =[
 	{ text: 'Cortar cebolla', completed: true },
 	{ text: 'Tomar el curso de intro a React', completed: false },
 	{ text: 'Llorar con la llorona', completed: false },
 	{ text: 'Un item mas', completed: false },
+	{ text: 'Un item ma  ws', completed: true},
 ];
 function App() {
 
+	const [searchValue, setSearchValue] = useState("");
+	const [todos, setTodos] = useState(defaultTodos);
+	const completedTD = todos.filter(todo => !!todo.completed).length;
+	const totalTD = todos.length;
+	const [completedTodos, setCompletedTodos] = useState(completedTD);
+	const [totalTodos, setTotalTodos] = useState(totalTD);
+	const  searchedTodo  = todos.filter(todo => todo.text.trim().toUpperCase().includes(searchValue.trim().toUpperCase()));
+
+
 	return (
+
 		<>
 			<header>
 			<CreateTodoButton/>
 				<img src={reactLogo} className="react-logo" alt="logo" />
 				<img src={viteLogo} className="vite-logo" alt="logo" />
-			<TodoCounter completedTodos={2} totalTodos={6}/> <TodoSearch />
+			<TodoCounter completedTodos={completedTodos} totalTodos={totalTodos}/> 
+			<TodoSearch 
+					searchValue={searchValue}
+					setSearchValue={setSearchValue} />
 			</header>
 			<TodoList>
-				{ defaultTodos.map(todo => ( <TodoItem text={todo.text} key={todo.text} completed={todo.completed} />)) }
+				{ searchedTodo.map(todo => ( <TodoItem text={todo.text} key={todo.text} completed={todo.completed} />)) }
 			</TodoList>
 		</>
 	)
