@@ -1,0 +1,49 @@
+li span{
+	padding: 5px 10px;
+	background-color: #f5f5f5;
+	margin: 0 5px;
+	color: #2ecc71;
+	font-weight: bold;
+	font-size: 13px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+li p{
+	font-size: 15px;
+	text-align: left !important;
+}
+p.completed{
+	text-decoration: line-through;
+	text-decoration-color: #2ecc71;
+	text-decoration-thickness: 1px;
+	text-shadow: 2px 2px 2px #2ecc71;
+}
+p.incompleted{
+	text-shadow: 2px 2px 2px #e74c3c;
+}
+.btn-delete{
+	background-color: #e74c3c;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.btn-delete:hover{
+	background-color: #c0392b;
+	font-weight: bold;
+}
+
+@media (max-width: 748px) {
+	li span{
+		font-size: 12px;
+	}
+	li p{
+		font-size: 13px;
+	}
+	.btn-delete{
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+}
