@@ -20,10 +20,10 @@ function App() {
 	const [searchValue, setSearchValue] = useState("");
 	const [todos, setTodos] = useState(defaultTodos);
 	const completedTD = todos.filter(todo => !!todo.completed).length;
-	const totalTD = todos.length;
-	const [completedTodos, setCompletedTodos] = useState(completedTD);
-	const [totalTodos, setTotalTodos] = useState(totalTD);
+
+
 	const  searchedTodo  = todos.filter(todo => todo.text.trim().toUpperCase().includes(searchValue.trim().toUpperCase()));
+
 	const completeTodos = (text) =>{
 		const newTodos = [... todos];
 		let  todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() == text.trim().toLowerCase());
@@ -31,12 +31,14 @@ function App() {
 		newTodos[todoIndex].completed = true;
 		setTodos(newTodos);
 	};
+
 	const deleteTodos = (text) =>{
 		const newTodos = [... todos];
 		let  todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() == text.trim().toLowerCase());
 		newTodos.splice(todoIndex,1)	
 		setTodos(newTodos);
-	};
+	 };
+
 	return (
 
 		<>
@@ -44,7 +46,8 @@ function App() {
 			<CreateTodoButton/>
 				<img src={reactLogo} className="react-logo" alt="logo" />
 				<img src={viteLogo} className="vite-logo" alt="logo" />
-			<TodoCounter completedTodos={completedTodos} totalTodos={totalTodos}/> 
+			
+			<TodoCounter completedTodos={completedTD} totalTodos={todos.length}/> 
 			<TodoSearch 
 					searchValue={searchValue}
 					setSearchValue={setSearchValue} 
