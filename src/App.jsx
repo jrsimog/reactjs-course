@@ -28,7 +28,7 @@ function App() {
 		const newTodos = [... todos];
 		let  todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() == text.trim().toLowerCase());
 
-		newTodos[todoIndex].completed = true;
+		newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
 		setTodos(newTodos);
 	};
 
