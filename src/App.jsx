@@ -8,35 +8,59 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { useState } from "react";
 
-const defaultTodos =[
-	{ text: 'Cortar cebolla', completed: true },
-	{ text: 'Tomar el curso de intro a React', completed: false },
-	{ text: 'Llorar con la llorona', completed: false },
-	{ text: 'Un item mas', completed: false },
-	{ text: 'Un item ma  ws', completed: true},
-];
+// const defaultTodos =[
+// 	{ text: 'Cortar cebolla', completed: true },
+// 	{ text: 'Tomar el curso de intro a React', completed: false },
+// 	{ text: 'Llorar con la llorona', completed: false },
+// 	{ text: 'Un item mas', completed: fa wlse },
+// 	{ text: 'Un item ma  ws', completed: true},
+// ];
+//
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+
+const 
+
+
 function App() {
 
+	let localStorageTodos = JSON.parse(localStorage.getItem('TODOS_V1'));
+	
+	let parsedTodos;
+	
+	if(!localStorageTodos){
+			localStorage.setItem('TODOS_V1', JSON.stringify([]));
+			parsedTodos = [];
+	}else{
+		parsedTodos = localStorageTodos;
+	}
+
 	const [searchValue, setSearchValue] = useState("");
-	const [todos, setTodos] = useState(defaultTodos);
+	const [todos, setTodos] = useState(parsedTodos);
 	const completedTD = todos.filter(todo => !!todo.completed).length;
-	const totalTD = todos.length;
-	const [completedTodos, setCompletedTodos] = useState(completedTD);
-	const [totalTodos, setTotalTodos] = useState(totalTD);
+
+
 	const  searchedTodo  = todos.filter(todo => todo.text.trim().toUpperCase().includes(searchValue.trim().toUpperCase()));
+
 	const completeTodos = (text) =>{
 		const newTodos = [... todos];
 		let  todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() == text.trim().toLowerCase());
 
-		newTodos[todoIndex].completed = true;
-		setTodos(newTodos);
+		newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+		saveTodos(newTodos);
 	};
+
 	const deleteTodos = (text) =>{
 		const newTodos = [... todos];
 		let  todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() == text.trim().toLowerCase());
 		newTodos.splice(todoIndex,1)	
+		saveTodos(newTodos);
+	 };
+
+	const saveTodos = (newTodos) =>{
+		localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
 		setTodos(newTodos);
-	};
+	}
+
 	return (
 
 		<>
@@ -44,7 +68,8 @@ function App() {
 			<CreateTodoButton/>
 				<img src={reactLogo} className="react-logo" alt="logo" />
 				<img src={viteLogo} className="vite-logo" alt="logo" />
-			<TodoCounter completedTodos={completedTodos} totalTodos={totalTodos}/> 
+			
+			<TodoCounter completedTodos={completedTD} totalTodos={todos.length}/> 
 			<TodoSearch 
 					searchValue={searchValue}
 					setSearchValue={setSearchValue} 

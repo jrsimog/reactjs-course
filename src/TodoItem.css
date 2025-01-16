@@ -23,16 +23,20 @@ p.incompleted{
 	text-shadow: 2px 2px 2px #e74c3c;
 }
 .btn-delete{
-	background-color: #e74c3c;
+	background-color: white;
 	color: #fff;
 	border: none;
-	padding: 10px 20px;
-	border-radius: 10px;
+	padding: 7px 8px;
+	border-radius: 5px;
 	cursor: pointer;
 }
 .btn-delete:hover{
-	background-color: #c0392b;
 	font-weight: bold;
+	border: 1px solid #e74c3c;
+}
+
+.btn-delete__svg--trash{
+	fill: #e74c3c;
 }
 
 @media (max-width: 748px) {
@@ -43,7 +47,24 @@ p.incompleted{
 		font-size: 13px;
 	}
 	.btn-delete{
-		padding: 5px 10px;
 		font-size: 12px;
 	}
+}
+
+.btnStatus{
+	padding: 5px 7px;
+	border-radius: 5px;
+	background-color: white;
+}
+
+.btnStatus__svg{
+	margin: -3px auto !important;
+}
+.btnStatus__svg--check{
+	fill: #2ecc71;
+	color: white;
+}
+.btnStatus__svg--del{
+	fill: #c0392b;
+	color: white;
 }
