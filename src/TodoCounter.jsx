@@ -6,7 +6,7 @@ function TodoCounter({totalTodos, completedTodos}) {
 		console.log(completedTodos);
 		return (
 		<h2>
-			{ allComplete ? `Felicitaciones completastes ${totalTodos} todos.`: `Has completado ${completedTodos} de ${totalTodos} TODOs`}
+			{ allComplete ? `🎉 Felicitaciones completastes ${totalTodos} todos.`: `Has completado ${completedTodos} de ${totalTodos} TODOs`}
 		</h2>
 		);
 }
