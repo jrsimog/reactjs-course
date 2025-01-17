@@ -1,6 +1,6 @@
 import React from "react";
 import './TodoItem.css';
-import StatusIcon from "./CompleteIcon";'./StatusIcon';
+import StatusIcon from "../CompleteIcon";
 import { FaTrashCan } from "react-icons/fa6";
 
 function TodoItem(props) {
