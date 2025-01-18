@@ -9,6 +9,8 @@ import viteLogo from '/vite.svg'
 import '../App/index.css'
 
 function AppUI({
+	loading,
+	error,
 	completedTodos,
 	totalTodos,
 	searchValue,
@@ -32,6 +34,10 @@ function AppUI({
 				/>
 			</header>
 			<TodoList>
+				{ loading && <p>Estamos cargando...</p>}
+				{ error && <p>Tenemos un error!!!</p>}
+				{(!loading && searchedTodo.length == 0) && <p>!Crea tu primer TODO!</p>}
+
 				{ searchedTodo.map(todo => (
 					<TodoItem 
 						key={todo.text}
