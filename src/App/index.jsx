@@ -21,9 +21,9 @@ function App() {
 		loading,
 		error
 	} = useLocalStorage('TODOS_V1');
+
 	const [searchValue, setSearchValue] = useState("");
 	const completedTD = todos.filter(todo => !!todo.completed).length;
-	const [totalTODOS, setTotalTodos] = useState(todos.length);
 
 	const  searchedTodo  = todos.filter(todo => todo.text.trim().toUpperCase().includes(searchValue.trim().toUpperCase()));
 
@@ -44,12 +44,11 @@ function App() {
 	 };
 
 
-
 	return (<AppUI
 			loading={loading}
 			error={error}
 			completedTodos={completedTD}
-			totalTodos={totalTODOS}
+			totalTodos={todos.length}
 			searchValue={searchValue}
 			setSearchValue={setSearchValue}
 			searchedTodo={searchedTodo}
