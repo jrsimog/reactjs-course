@@ -1,5 +1,5 @@
 import '../App/index.css'
-import { useState } from "react";
+import { React, useState, useEffect} from "react";
 import useLocalStorage from './UseLocalStorage'
 import AppUI  from './AppUI'
 // const defaultTodos =[
@@ -18,6 +18,7 @@ function App() {
 	const [todos, saveTodos] = useLocalStorage('TODOS_V1');
 	const [searchValue, setSearchValue] = useState("");
 	const completedTD = todos.filter(todo => !!todo.completed).length;
+	const [completedTODO, setCompleteTODO] = useState()
 
 
 	const  searchedTodo  = todos.filter(todo => todo.text.trim().toUpperCase().includes(searchValue.trim().toUpperCase()));
@@ -36,6 +37,15 @@ function App() {
 		newTodos.splice(todoIndex,1)	
 		saveTodos(newTodos);
 	 };
+
+	
+		console.log('log 1');
+
+		// useEffect(()=>{ console.log('looooog 2')},[]);
+		useEffect(()=>{ console.log('looooog 2')}, todos);
+		
+		console.log('log 3');
+
 
 	return (<AppUI
 			completedTodos={completedTD}
