@@ -1,0 +1,44 @@
+.parrafoLoading{
+	display: block;
+	margin: -10px 0px
+}
+.parrafoLoading__loading{
+	background-color: red;
+	width: 100%;
+	padding: 2% 0px;
+	border-radius: 5px;
+  animation: skeleton-loading 0.5s linear infinite alternate;
+	color: gray;
+	/* flex box */
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	margin-bottom: -5px;
+
+}
+.parrafoLoading__loading--item{
+	background-color: gray;
+	padding: 15px 15px;
+	border-radius: 10px;
+	margin: 0 5px;
+  animation: skeleton-pulse 0.8s linear infinite alternate;
+}
+.parrafoLoading__loading--text{
+	width: 70%;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+	}
+}
+@keyframes skeleton-pulse{
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+	}
+}

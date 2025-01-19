@@ -40,7 +40,6 @@ function App() {
 		let  todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() == text.trim().toLowerCase());
 		newTodos.splice(todoIndex,1)	
 		saveTodos(newTodos);
-		setTotalTodos(newTodos.length);
 	 };
 
 

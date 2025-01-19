@@ -16,6 +16,7 @@
 
 .btn-add__svg--add{
 	fill: #45a049;
+	margin-top: 5px;
 }
 @media (max-width: 748px) {
 	.btn-add{
