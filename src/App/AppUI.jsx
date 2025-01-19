@@ -3,6 +3,9 @@ import TodoCounter	from '../TodoCounter';
 import TodoSearch from '../TodoSearch';
 import TodoList from '../TodoList';
 import TodoItem from '../TodoItem';
+import TodosLoading from '../TodosLoading';
+import TodosError from '../TodosError';
+import EmptyTodos from '../EmptyTodos';
 import CreateTodoButton from '../CreateTodoButton';
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -34,9 +37,9 @@ function AppUI({
 				/>
 			</header>
 			<TodoList>
-				{ loading && <p>Estamos cargando...</p>}
-				{ error && <p>Tenemos un error!!!</p>}
-				{(!loading && searchedTodo.length == 0) && <p>!Crea tu primer TODO!</p>}
+				{ loading && <TodosLoading/>}
+				{ error && <TodosError/>}
+				{(!loading && searchedTodo.length == 0) && <EmptyTodos /> }
 
 				{ searchedTodo.map(todo => (
 					<TodoItem 
