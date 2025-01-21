@@ -1,5 +1,15 @@
 .box-counter{
 	width: 70%;
+  animation: skeleton-pulse-counter 0.5s linear infinite alternate;
+  padding: 15px;
+}
+.box-counter-title
+	width: 85%;
+	animation: skeleton-pulse-counter 0.5s linear infinite alternate;
+	border-radius: 5px;
+	padding: 15px;
+	display: block;
+	margin: 0 auto !important;
 }
 @keyframes skeleton-pulse-counter{
   0% {
