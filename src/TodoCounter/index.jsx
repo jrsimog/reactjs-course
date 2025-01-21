@@ -1,4 +1,6 @@
 import React from "react";
+import LoadingTodoCounter from './LoadingTodoCounter';
+
 
 function TodoCounter({totalTodos, completedTodos}) {
 	const allComplete = (totalTodos > 0 && totalTodos == completedTodos) ? true : false;
