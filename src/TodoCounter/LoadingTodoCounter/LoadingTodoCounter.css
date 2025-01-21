@@ -3,7 +3,7 @@
   animation: skeleton-pulse-counter 0.5s linear infinite alternate;
   padding: 15px;
 }
-.box-counter-title {
+.box-counter-title
 	width: 85%;
 	animation: skeleton-pulse-counter 0.5s linear infinite alternate;
 	border-radius: 5px;

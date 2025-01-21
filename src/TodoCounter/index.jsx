@@ -2,7 +2,6 @@ import React from "react";
 import LoadingTodoCounter from './LoadingTodoCounter';
 import LoadingTodoCounterTitle from './LoadingTodoCounterTitle'
 
-
 function TodoCounter({totalTodos, completedTodos}) {
 	const allComplete = (totalTodos > 0 && totalTodos == completedTodos) ? true : false;
 		return (
