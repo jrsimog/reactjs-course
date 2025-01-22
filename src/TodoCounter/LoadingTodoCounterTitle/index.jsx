@@ -3,7 +3,7 @@ import '../LoadingTodoCounter/LoadingTodoCounter.css';
 
 function LoadingTodoCounterTitle() {
   return (
-    <span className="LoadingtodoCounterTitle"></span>
+    <span className="box-counter-title"></span>
   );
   
 }
