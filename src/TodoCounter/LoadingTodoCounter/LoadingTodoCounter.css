@@ -3,6 +3,7 @@
   animation: skeleton-pulse-counter 0.5s linear infinite alternate;
   padding: 15px;
 }
+
 .box-counter-title {
 	width: 85%;
 	animation: skeleton-pulse-counter 0.5s linear infinite alternate;
@@ -11,6 +12,7 @@
 	display: block;
 	margin: 0 auto !important;
 }
+
 @keyframes skeleton-pulse-counter{
   0% {
     background-color: hsl(200, 20%, 80%);
