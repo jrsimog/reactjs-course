@@ -1,7 +1,9 @@
 import React from "react";
 import LoadingTodoCounterTitle from './LoadingTodoCounterTitle'
+import {TodoContext} from "../TodoContext";
 
-function TodoCounter({ totalTodos, completedTodos }) {
+function TodoCounter() {
+    const {completedTodos, totalTodos} = React.useContext(TodoContext);
     const allComplete = (totalTodos > 0 && totalTodos === completedTodos);
     const skeletonClass = (totalTodos || completedTodos) ? 'skeleton-transition' : '';
 
