@@ -37,8 +37,8 @@ function TodoProvider({ children }) {
     const newTodos  = [... todos];
     let result = true; 
     let todoIndex = newTodos.findIndex(todo => todo.text.trim().toLowerCase() === text.trim().toLowerCase());
-    
-    if(todoIndex < 0){
+  
+    if(todoIndex > -1){
       result = false;
     }else{
       let newTodo = {

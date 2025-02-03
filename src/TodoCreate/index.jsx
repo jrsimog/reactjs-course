@@ -7,7 +7,8 @@ function TodoCreate() {
   let {
     createTodo,
     showError,
-    setShowError
+    setShowError,
+    setOpenModal
   } = React.useContext(TodoContext);
 
   const createTodoHandler = () => {
@@ -15,16 +16,20 @@ function TodoCreate() {
     let value = input.value;
       setShowError(false);
     if(value && createTodo(value) == false){
-      
       setShowError(true)
     }
 
+    if(!showError && value){
+      input.value = '';
+      setOpenModal(false)
+    }  
   }
 
   const btnCreateHandler = () =>{
       let input = document.querySelector('.input-create');
       let button = document.querySelector('.btn-create');
       let value = input.value;
+      setShowError(false);
       if(value){
         button.disabled = false;
       }else{
@@ -42,13 +47,8 @@ function TodoCreate() {
       {
         showError && <span>No se puede crear el todo, ya existe</span>
       }
-      {
-        showError == false &&
-          <>
           <input onInput={btnCreateHandler} type="text" className="input-create" />
           <button className="btn-create" type="submit" disabled>Crear</button>
-          </>
-      }
     </form>
   </>);
 }
