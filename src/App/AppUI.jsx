@@ -11,8 +11,19 @@ import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import '../App/index.css'
 import { TodoContext } from '../TodoContext'
-
+import Modal from '../Modal';
+import TodoCreate from '../TodoCreate';
 function AppUI() {
+
+
+const {
+    loading,
+    error,
+    searchedTodo,
+    completeTodos,
+    deleteTodos,
+    openModal,
+  } = React.useContext(TodoContext);
     return (
         <>
             <header>
@@ -22,30 +33,21 @@ function AppUI() {
                 <TodoCounter />
                 <TodoSearch />
             </header>
-            <TodoContext.Consumer>
-                {({
-                    loading,
-                    error,
-                    searchedTodo,
-                    completeTodos,
-                    deleteTodos,
-                }) => (
-                    <TodoList>
-                        {loading && <TodosLoading />}
-                        {error && <TodosError />}
-                        {(!loading && searchedTodo.length === 0) && <EmptyTodos />}
-                        {searchedTodo.map(todo => (
-                            <TodoItem
-                                key={todo.text}
-                                text={todo.text}
-                                completed={todo.completed}
-                                onComplete={() => completeTodos(todo.text)}
-                                onDelete={() => deleteTodos(todo.text)}
-                            />
-                        ))}
-                    </TodoList>
-                )}
-            </TodoContext.Consumer>
+            <TodoList>
+                {loading && <TodosLoading />}
+                {error && <TodosError />}
+                {(!loading && searchedTodo.length === 0) && <EmptyTodos />}
+                {searchedTodo.map(todo => (
+                    <TodoItem
+                        key={todo.text}
+                        text={todo.text}
+                        completed={todo.completed}
+                        onComplete={() => completeTodos(todo.text)}
+                        onDelete={() => deleteTodos(todo.text)}
+                    />
+                ))}
+            </TodoList>
+            { openModal && <Modal><TodoCreate/></Modal> }
         </>
     );
 }
