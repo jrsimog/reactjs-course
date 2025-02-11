@@ -1,37 +1,53 @@
-import React from "react";
+import React, { useEffect, useState} from "react";
 import { TodoContext } from '../TodoContext'
-
+import './todoCreate.css'
 
 function TodoCreate() {
 
+  const [newTodoValue, setNewTodoValue] = useState('');
   let {
     createTodo,
     showError,
     setShowError,
+    openModal,
+    setOpenModal
   } = React.useContext(TodoContext);
 
-  const createTodoHandler = () => {
-    let input = document.querySelector('.input-create');
-    let value = input.value;
-      setShowError(false);
-    if(value && createTodo(value) == false){
-      setShowError(true)
-    }
-
-    if(!showError && value){
-      input.value = '';
-    
-  }
-
-  const btnCreateHandler = () =>{
-      let input = document.querySelector('.input-create');
-      let button = document.querySelector('.btn-create');
-      let value = input.value;
-      if(value){
+  useEffect(() =>{
+      let button = document.querySelector('.container__btn-create');
+      if(newTodoValue.length){
         button.disabled = false;
       }else{
         button.disabled = true;
       }
+
+  },[newTodoValue, openModal]);
+
+  
+
+  const createTodoHandler = () => {
+    let value = newTodoValue; 
+      setShowError(false);
+    if(value && createTodo(value) == false){
+      setShowError(true)
+    }
+    closeModal();
+  }
+
+  const btnCreateHandler = (e) =>{
+      setNewTodoValue(e.target.value);
+  }
+  
+  const btnCancelHandler = () =>{
+          closeModal();
+  }
+
+  const closeModal = () =>{
+      let input = document.querySelector('.form__input-create');
+          input.value = '';
+          setOpenModal(false);
+    let modalNode = document.querySelector('.modal')
+        modalNode.classList.remove("modal--open")
   }
 
   const submitHandler = (e) => {
@@ -41,11 +57,15 @@ function TodoCreate() {
 
   return (<>
     <form onSubmit={submitHandler}>
-      {
-        showError && <span>No se puede crear el todo, ya existe</span>
-      }
-          <input onInput={btnCreateHandler} type="text" className="input-create" />
-          <button className="btn-create" type="submit" disabled>Crear</button>
+          {
+            showError && <span>No se puede crear el todo, ya existe</span>
+          }
+          <label className="form__label">Crear un todo</label>
+      <textarea onInput={btnCreateHandler} className="form__input-create"></textarea>
+          <div className="container__btn">
+            <button className="container__btn-cancel" onClick={()=>btnCancelHandler()}>Cancelar</button>  
+            <button className="container__btn-create" type="submit" disabled={true}>Crear</button>
+          </div>
     </form>
   </>);
 }
