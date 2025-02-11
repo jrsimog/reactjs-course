@@ -10,11 +10,9 @@
   justify-content: center;
   align-items: center;
 }
-
 .modal--open {
   display: flex;
 }
-
 .modal__content {
   background: white;
   padding: 5%;

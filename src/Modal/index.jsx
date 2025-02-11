@@ -8,18 +8,17 @@ function Modal({children}) {
   let {
     openModal
   } = React.useContext(TodoContext);
-
   useEffect(()=>{
      if(openModal){
         modalNode.classList.add("modal--open")
       }else{
         modalNode.classList.remove("modal--open")
       }
-  },[openModal]); 
-
+  },[openModal]) 
   return ReactDom.createPortal(
     <>
         <div className="modal__content">
+          <button className="modal__close">&times;</button>
           {children}
         </div>
     </>
